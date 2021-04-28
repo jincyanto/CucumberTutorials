@@ -1,4 +1,4 @@
-Feature: LoginFaeature
+Feature: LoginFeature
 
   Scenario: Logging into Amazon
     Given I open the browser
