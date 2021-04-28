@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginFeature {
+public class FeatureStepDefinitions {
 
     WebDriver driver;
 
@@ -26,6 +26,12 @@ public class LoginFeature {
     public void login_button_should_exist(){
         driver.findElement(By.xpath("//*[@id=\"nav-link-accountList-nav-line-1\"]")).click();
     }
+
+   @Then("^I open (.*) website$")
+    public void i_open_website(String website){
+        driver.navigate().to("https://www."+website+".com");
+
+   }
 
 
 }
