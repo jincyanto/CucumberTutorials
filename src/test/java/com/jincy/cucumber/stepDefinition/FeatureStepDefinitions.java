@@ -5,11 +5,9 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class FeatureStepDefinitions {
 
@@ -43,6 +41,19 @@ public class FeatureStepDefinitions {
         driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")).sendKeys(text);
         driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]")).click();
    }
+
+   @Then("^I open the Url$")
+   public void i_open_url(){
+       driver.navigate().to("https://www.seleniumeasy.com/test/drag-drop-range-sliders-demo.html");
+   }
+
+   @Then("^I slide$")
+   public void i_slide(){
+       WebElement slider =  driver.findElement(By.xpath("//*[@id=\"slider3\"]/div/input"));
+       Actions move = new Actions(driver);
+       move.moveToElement(slider).clickAndHold().moveByOffset(13,0).release().perform();
+   }
+
 
    @AfterStep
     public void afterStep(Scenario scenario){
